@@ -1,5 +1,3 @@
-$Id: README 4899 2013-06-26 03:24:20Z im4 $
-
 ansible_get - Ansible RESTful API
 =================================
 
