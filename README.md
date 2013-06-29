@@ -1,10 +1,11 @@
 ansible_get - Ansible RESTful API
 =================================
 
-ansible_get - A RESTful API built on Flask to get Ansible objects.
+ansible_get - A RESTful API built on Flask to `GET` Ansible objects.
 
-Host: 0.0.0.0 
-Port: 8000
+Host: `0.0.0.0` 
+
+Port: `8000`
 
 
 Available methods
@@ -13,42 +14,34 @@ Available methods
 * `/api/version`
 
     Print API version.
-    HTTP method: `GET`
 
 * `/api/methods`
 
     Print available API methods.
-    HTTP method: `GET`
 
 * `/api/hosts`
 
-    List hosts and groups in the inventory
-    HTTP method: `GET`
+    List hosts and groups in the inventory.
 
 * `/api/groups`
 
-    List groups in the inventory
-    HTTP method: `GET`
+    List groups in the inventory.
 
 * `/api/listgroups/<host>`
 
-    List groups based on host
-    HTTP method: `GET`
+    List groups based on host.
 
 * `/api/listhosts/<group>`
 
-    List hosts based on group
-    HTTP method: `GET`
+    List hosts based on group.
 
 * `/api/<module>/<pattern>`
 
-    Request allowed module to perform action on host pattern
-    HTTP method: `GET`
+    Request allowed module to perform action on host pattern.
 
 * `/api/modules`
 
-    List all allowed modules
-    HTTP method: `GET`
+    List all allowed modules.
 
 
 Allowed modules
