@@ -1,0 +1,2 @@
+include requirements.txt run.py README 
+recursive-include ansible_get/ *

@@ -1,0 +1,11 @@
+Babel==0.9.5
+Flask==0.9
+Jinja2==2.5.5
+MarkupSafe==0.11
+PyYAML==3.08
+Werkzeug==0.8.3
+ansible==1.1
+distribute==0.6.34
+paramiko==1.7.7.1
+pycrypto==2.3
+wsgiref==0.1.2
