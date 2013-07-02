@@ -1,11 +1,7 @@
-ansible_get - Ansible RESTful API
-=================================
+ansible_get
+===========
 
-ansible_get - A RESTful API built on Flask to `GET` Ansible objects.
-
-Host: `0.0.0.0` 
-
-Port: `8000`
+A RESTful API built on Flask to `GET` Ansible objects.
 
 
 Available methods
