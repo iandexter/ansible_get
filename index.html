@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ansible_get by iandexter</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>ansible_get</h1>
+        <p>A RESTful API built on Flask to get Ansible objects</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/iandexter/ansible_get" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/iandexter/ansible_get/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/iandexter/ansible_get/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h2>
+<a name="available-methods" class="anchor" href="#available-methods"><span class="octicon octicon-link"></span></a>Available methods</h2>
+
+<ul>
+<li>
+<p><code>/api/version</code></p>
+
+<p>Print API version.</p>
+</li>
+<li>
+<p><code>/api/methods</code></p>
+
+<p>Print available API methods.</p>
+</li>
+<li>
+<p><code>/api/hosts</code></p>
+
+<p>List hosts and groups in the inventory.</p>
+</li>
+<li>
+<p><code>/api/groups</code></p>
+
+<p>List groups in the inventory.</p>
+</li>
+<li>
+<p><code>/api/listgroups/&lt;host&gt;</code></p>
+
+<p>List groups based on host.</p>
+</li>
+<li>
+<p><code>/api/listhosts/&lt;group&gt;</code></p>
+
+<p>List hosts based on group.</p>
+</li>
+<li>
+<p><code>/api/&lt;module&gt;/&lt;pattern&gt;</code></p>
+
+<p>Request allowed module to perform action on host pattern.</p>
+</li>
+<li>
+<p><code>/api/modules</code></p>
+
+<p>List all allowed modules.</p>
+</li>
+</ul><h2>
+<a name="allowed-modules" class="anchor" href="#allowed-modules"><span class="octicon octicon-link"></span></a>Allowed modules</h2>
+
+<ul>
+<li>
+<p><code>setup</code></p>
+
+<p>Gather useful variables about remote hosts. Returns JSON dict.</p>
+</li>
+<li>
+<p><code>ping</code></p>
+
+<p>A trivial test module. Returns <code>pong</code> on successful contact.</p>
+</li>
+</ul>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/iandexter">iandexter</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
