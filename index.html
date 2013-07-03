@@ -39,8 +39,15 @@
         <ul></ul>
       </nav>
       <section>
-        <h2>
-<a name="available-methods" class="anchor" href="#available-methods"><span class="octicon octicon-link"></span></a>Available methods</h2>
+        <h1>
+<a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h1>
+
+<p>This assumes <a href="http://www.ansibleworks.com/">Ansible</a> is running on the host. Refer to the <a href="http://www.ansibleworks.com/docs/">Ansible documentation</a> for more details.</p>
+
+<p><a href="http://flask.pocoo.org/">Flask</a> can be ran off a <a href="http://www.virtualenv.org/en/latest/">virtual environment</a>. In fact, this is the <em>recommended</em> approach. </p>
+
+<h1>
+<a name="available-methods" class="anchor" href="#available-methods"><span class="octicon octicon-link"></span></a>Available methods</h1>
 
 <ul>
 <li>
@@ -83,8 +90,13 @@
 
 <p>List all allowed modules.</p>
 </li>
-</ul><h2>
-<a name="allowed-modules" class="anchor" href="#allowed-modules"><span class="octicon octicon-link"></span></a>Allowed modules</h2>
+<li>
+<p><code>/api/uptime/&lt;pattern&gt;</code></p>
+
+<p>Get uptime of specified host pattern.</p>
+</li>
+</ul><h1>
+<a name="allowed-modules" class="anchor" href="#allowed-modules"><span class="octicon octicon-link"></span></a>Allowed modules</h1>
 
 <ul>
 <li>
