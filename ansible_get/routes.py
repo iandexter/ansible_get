@@ -102,3 +102,12 @@ def get_groups(host = None):
             grouplist.append(g.name)
             grouplist.sort()
         return respond_with({ host: grouplist }, 200)
+
+@app.route('/api/uptime/<pattern>', methods = ['GET'])
+def get_uptime(pattern = None):
+    """Get uptime of specified host pattern"""
+    conn = runner.Runner(pattern = pattern, forks=10)
+    conn.module_name = 'command'
+    conn.module_args = '/usr/bin/uptime'
+    result = conn.run()
+    return respond_with(result, 200)
