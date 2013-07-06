@@ -16,6 +16,7 @@ allowed_modules = ['setup', 'ping']
 # Helpers
 
 def respond_with(body = {}, status = 200):
+    """Format API response"""
     response = jsonify(body)
     response.headers['X-Title'] =  "%s v%s" % (__appname__, __version__)
     response.status_code = status
@@ -23,6 +24,13 @@ def respond_with(body = {}, status = 200):
 
 def no_result():
     return respond_with({ 'result': [] }, 200)
+
+def get_servers(status = None):
+    """List all servers based on status"""
+    results = runner.Runner(module_name='ping', module_args='',
+                            pattern='all', forks=10).run()
+    return results[status].items()
+
 
 # Routes
 
@@ -111,3 +119,15 @@ def get_uptime(pattern = None):
     conn.module_args = '/usr/bin/uptime'
     result = conn.run()
     return respond_with(result, 200)
+
+@app.route('/api/is/<status>', methods = ['GET'])
+def get_server_status(status = None):
+    """List servers according to status"""
+    if status == 'up':
+        server_status = 'contacted'
+    elif status == 'down':
+        server_status = 'dark'
+    else:
+        return no_result()
+    results = get_servers(server_status)
+    return respond_with({ status: results }, 200)
