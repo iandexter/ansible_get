@@ -51,6 +51,10 @@ Available methods
 
   Get uptime of specified host pattern.
 
+* `/api/is/<status>`
+
+  List servers according to status
+
 
 Allowed modules
 ---------------
