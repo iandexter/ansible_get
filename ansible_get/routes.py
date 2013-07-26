@@ -5,11 +5,11 @@ Routes for the Ansible RESTful API.
 """
 
 from ansible_api import app
-from flask import jsonify, request
+from flask import jsonify, request, url_for
 from ansible import runner, inventory
 
 __appname__ = 'ansible_get - Ansible RESTful API'
-__version__ = '0.5'
+__version__ = '0.6'
 
 allowed_modules = ['setup', 'ping']
 
@@ -17,7 +17,11 @@ allowed_modules = ['setup', 'ping']
 
 def respond_with(body = {}, status = 200):
     """Format API response"""
-    response = jsonify(body)
+    response_body = {}
+    response_body['data'] = body
+    response_body['version'] = __version__
+    response_body['status'] = status
+    response = jsonify(response_body)
     response.headers['X-Title'] =  "%s v%s" % (__appname__, __version__)
     response.status_code = status
     return response
@@ -36,7 +40,7 @@ def get_servers(status = None):
 
 @app.errorhandler(404)
 def not_found(error = None):
-    message = { 'status': 404, 'Message': "Not Found: %s" % (request.path) }
+	message = { 'Message': "Not Found: %s" % (request.path) }
     return respond_with(message, 404)
 
 @app.route('/api/version', methods = ['GET'])
@@ -50,10 +54,12 @@ def list_methods():
     api_methods = {}
     for rule in app.url_map.iter_rules():
         if rule.endpoint != 'static':
+            this_rule = {}
             methods = rule.methods.difference(['OPTIONS', 'HEAD'])
-            helper_text = "%s (%s)" % (app.view_functions[rule.endpoint].__doc__,
-                                      " ".join(methods))
-            api_methods[rule.rule] = helper_text
+            this_rule['url'] = "%s%s" % (request.url_root[:-1], rule.rule)
+            this_rule['help_text'] = app.view_functions[rule.endpoint].__doc__
+            this_rule['method'] = ", ".join(methods)
+            api_methods[rule.endpoint.upper()] = this_rule
     return respond_with(api_methods, 200)
 
 @app.route('/api/modules', methods = ['GET'])
@@ -67,7 +73,7 @@ def get_response(module = None, pattern = None):
     if module not in allowed_modules:
         msg = "Module %s is not allowed or is not a valid module" \
 		      % ((request.path).split('/')[2])
-        message = { 'status': 405, 'Message': msg }
+        message = { 'Message': msg }
         return respond_with(message, 405)
     else:
         conn = runner.Runner(pattern = pattern, timeout = 30)
