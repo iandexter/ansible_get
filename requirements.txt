@@ -1,6 +1,6 @@
 Babel==0.9.5
 flask~>0.12.3
-Jinja2~>2.5.5
+Jinja2>=2.10.1
 MarkupSafe==0.11
 PyYAML~>4.2b1
 Werkzeug==0.8.3
